@@ -21,6 +21,7 @@ module Interdi
     # config.i18n.default_locale = :de
 
     config.i18n.default_locale = :it
+    config.i18n.fallbacks = true
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
