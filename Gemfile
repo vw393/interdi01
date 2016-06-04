@@ -51,3 +51,5 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'devise-bootstrap-views'
+
+gem 'globalize', '~> 5.0.1'

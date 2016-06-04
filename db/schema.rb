@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20160601164917) do
 
+  create_table "board_translations", force: :cascade do |t|
+    t.integer  "board_id",   null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.text     "descr"
+  end
+
+  add_index "board_translations", ["board_id"], name: "index_board_translations_on_board_id"
+  add_index "board_translations", ["locale"], name: "index_board_translations_on_locale"
+
   create_table "boards", force: :cascade do |t|
     t.string   "pn"
     t.string   "name"
@@ -38,8 +50,6 @@ ActiveRecord::Schema.define(version: 20160601164917) do
   end
 
   create_table "sensor_families", force: :cascade do |t|
-    t.string   "name"
-    t.string   "descr"
     t.integer  "technology_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -47,10 +57,34 @@ ActiveRecord::Schema.define(version: 20160601164917) do
 
   add_index "sensor_families", ["technology_id"], name: "index_sensor_families_on_technology_id"
 
+  create_table "sensor_family_translations", force: :cascade do |t|
+    t.integer  "sensor_family_id", null: false
+    t.string   "locale",           null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "name"
+    t.text     "descr"
+  end
+
+  add_index "sensor_family_translations", ["locale"], name: "index_sensor_family_translations_on_locale"
+  add_index "sensor_family_translations", ["sensor_family_id"], name: "index_sensor_family_translations_on_sensor_family_id"
+
+  create_table "sensor_translations", force: :cascade do |t|
+    t.integer  "sensor_id",  null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.text     "descr"
+  end
+
+  add_index "sensor_translations", ["locale"], name: "index_sensor_translations_on_locale"
+  add_index "sensor_translations", ["sensor_id"], name: "index_sensor_translations_on_sensor_id"
+
   create_table "sensors", force: :cascade do |t|
     t.string   "pn"
     t.string   "name"
-    t.string   "descr"
+    t.text     "descr"
     t.string   "size"
     t.integer  "manufacturer_id"
     t.integer  "sensor_family_id"
@@ -63,7 +97,7 @@ ActiveRecord::Schema.define(version: 20160601164917) do
 
   create_table "technologies", force: :cascade do |t|
     t.string   "name"
-    t.string   "descr"
+    t.text     "descr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

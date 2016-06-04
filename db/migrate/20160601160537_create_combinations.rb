@@ -1,5 +1,6 @@
 class CreateCombinations < ActiveRecord::Migration
-  def change
+
+  def up
     create_table :combinations do |t|
       t.references :sensor, index: true, foreign_key: true
       t.references :board, index: true, foreign_key: true
@@ -7,4 +8,9 @@ class CreateCombinations < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
+  def down
+    drop_table :combinations
+  end
+
 end

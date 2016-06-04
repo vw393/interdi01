@@ -16,12 +16,15 @@ private
     when "it"
       @locale_flag = "/assets/flags/it.png"
       @locale_name = "ITALIANO"
+      @locale_abbr = "it"
     when "de"
       @locale_flag = "/assets/flags/de.png"
       @locale_name = "DEUTSCH"
+      @locale_abbr = "de"
     else
       @locale_flag = "/assets/flags/us.png"
       @locale_name = "ENGLISH"
+      @locale_abbr = "en"
     end
   end
 
